@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './App.css'
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from "highcharts-react-official";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const options = {
+    title: {
+      text: 'AAPL stock price'
+    },
+    series: [{
+      data: [
+        ["2024-01-01", 100],
+        ["2024-01-02", 105],
+        ["2024-01-03", 110]
+      ]
+    }]
+  };
+
+  const MyChart = () => (
+    <HighchartsReact highcharts={Highcharts} constructorType={'stockChart'}
+      options={options} />
+  );
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      hello world
+      <MyChart></MyChart>
     </>
   )
 }
