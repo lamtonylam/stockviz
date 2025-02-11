@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import './App.css'
-import Highcharts from 'highcharts/highstock';
-import HighchartsReact from "highcharts-react-official";
+import Highcharts from 'highcharts/highstock'
+import HighchartsReact from 'highcharts-react-official'
+import { get_stock_data } from './utils/parser';
 
 
 function App() {
@@ -11,14 +12,14 @@ function App() {
       text: 'AAPL stock price'
     },
     series: [{
-      data: [
-        ["2024-01-01", 100],
-        ["2024-01-02", 105],
-        ["2024-01-03", 110]
-      ]
-    }]
+      type: 'line',
+      name: 'AAPL',
+      data: get_stock_data(),
+      tooltip: {
+        valueDecimals: 2
+      },
+    }],
   };
-
   const MyChart = () => (
     <HighchartsReact highcharts={Highcharts} constructorType={'stockChart'}
       options={options} />
@@ -26,7 +27,6 @@ function App() {
 
   return (
     <>
-      hello world
       <MyChart></MyChart>
     </>
   )
