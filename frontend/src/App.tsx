@@ -4,7 +4,9 @@ import { DayChart } from './components/dayChart';
 function App() {
   return (
     <>
-      <DayChart />
+      <div className="stockbox">
+        <DayChart />
+      </div>
     </>
   );
 }
