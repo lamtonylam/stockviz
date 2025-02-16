@@ -6,8 +6,10 @@ app.use(express.json());
 
 const PORT = 3000;
 
-app.get('/', async (_req, res) => {
-  const stockData = await get_daily_stock("IBM");
+app.get('/', async (req, res) => {
+  const ticker = req.query.ticker as string;
+  // if no ticker is provided, default to AAPL stock
+  const stockData = await get_daily_stock(ticker ? ticker : 'AAPL');
   res.send(stockData);
 });
 
