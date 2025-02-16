@@ -24,7 +24,6 @@ const instance = Axios.create();
 const axios = setupCache(instance);
 
 export const get_daily_stock = async (ticker: string) => {
-  // api limits
   const api_url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&apikey=${process.env.alphavantage_api_key}`;
   try {
     const getStockData = await axios.get<StockApiResponse>(api_url, {
