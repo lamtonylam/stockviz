@@ -23,14 +23,14 @@ interface StockApiResponse {
 const instance = Axios.create();
 const axios = setupCache(instance);
 
-export const get_daily_stock = async (ticker: string) => {
+export const get_daily_stock = async (
+  ticker: string
+): Promise<StockApiResponse | null> => {
   const api_url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&apikey=${process.env.alphavantage_api_key}`;
   try {
     const getStockData = await axios.get<StockApiResponse>(api_url, {
       cache: { ttl: 1000 * 60 * 60 }, // cache time to live is 1 hour
     });
-    console.log(getStockData.cached);
-    console.log(api_url);
     return getStockData.data;
   } catch (error) {
     console.log(error);
