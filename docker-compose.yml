@@ -10,6 +10,8 @@ services:
     container_name: stockviz-backend
     env_file:
       - ./backend/.env
+    environment:
+    - alphavantage_api_key=${alphavantage_api_key}
     restart: always
 
   frontend:
