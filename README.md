@@ -15,7 +15,7 @@ You can get the AlphaVantage key [here](https://www.alphavantage.co/support/#api
 
 2. Start the application:
 ```bash
-docker compose up
+docker-compose -f docker-compose.local.yml up
 ```
 
 3. Access the application at `http://localhost:5173`
@@ -27,9 +27,7 @@ To stop the containers:
 docker compose down
 ```
 
-## Development
-
-For development, you can use:
+## Running Docker compose in production (using environment variables and not .env file)
 ```bash
-docker compose up --build
+docker-compose up
 ```
