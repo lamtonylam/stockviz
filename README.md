@@ -16,7 +16,7 @@ You can get the AlphaVantage key [here](https://www.alphavantage.co/support/#api
 2. Start the application:
 ```bash
 docker compose -f docker-compose.local.yml up
-
+```
 3. Access the application at `http://localhost:5173`
 
 ## Stop the Application
@@ -36,4 +36,4 @@ alphavantage_api_key={your_key}
 Then run
 ```bash
 docker-compose up
-``
+```
