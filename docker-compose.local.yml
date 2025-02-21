@@ -22,7 +22,8 @@ services:
       - frontend_node_modules:/usr/src/app/node_modules
     container_name: stockviz-frontend
     env_file:
-      - ./frontend/.env
+      - path: ./frontend/.env
+        required: false
     depends_on:
       - backend
     restart: always
