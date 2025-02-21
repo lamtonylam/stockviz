@@ -6,7 +6,9 @@ interface StockData {
 }
 
 const stock_api_call = async () => {
-  const response = await axios.get('http://localhost:3000/?ticker=AAPL');
+  const backendUrl =
+    import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+  const response = await axios.get(`${backendUrl}/?ticker=AAPL`);
   return response.data;
 };
 
@@ -15,7 +17,10 @@ export const get_stock_data = async (): Promise<[number, number][]> => {
 
   const stock_data_list: [number, number][] = [];
 
-  for (const [key, value] of Object.entries(stock_data) as [string, StockData][]) {
+  for (const [key, value] of Object.entries(stock_data) as [
+    string,
+    StockData
+  ][]) {
     // adds to the list (date in epoch , closing value)
     stock_data_list.push([new Date(key).getTime(), Number(value['4. close'])]);
   }

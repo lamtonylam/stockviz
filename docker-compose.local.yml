@@ -8,8 +8,8 @@ services:
       - ./backend:/usr/src/app
       - backend_node_modules:/usr/src/app/node_modules
     container_name: stockviz-backend
-    environment:
-      - alphavantage_api_key=${alphavantage_api_key}
+    env_file:
+      - ./backend/.env
     restart: always
 
   frontend:
@@ -21,8 +21,8 @@ services:
       - ./frontend:/usr/src/app
       - frontend_node_modules:/usr/src/app/node_modules
     container_name: stockviz-frontend
-    environment:
-      - VITE_BACKEND_URL=${VITE_BACKEND_URL}
+    env_file:
+      - ./frontend/.env
     depends_on:
       - backend
     restart: always
