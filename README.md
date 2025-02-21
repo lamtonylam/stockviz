@@ -15,7 +15,7 @@ You can get the AlphaVantage key [here](https://www.alphavantage.co/support/#api
 
 2. Start the application:
 ```bash
-docker-compose -f docker-compose.local.yml up
+docker compose -f docker-compose.local.yml up
 ```
 
 3. Access the application at `http://localhost:5173`
@@ -28,6 +28,13 @@ docker compose down
 ```
 
 ## Running Docker compose in production (using environment variables and not .env file)
+Define the variables:
+```
+VITE_BACKEND_URL={your_backend_url}
+alphavantage_api_key={your_key}
+```
+
+Then run
 ```bash
 docker-compose up
 ```
